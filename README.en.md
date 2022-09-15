@@ -1,3 +1,6 @@
+# Assignment Answer
+Link to the Django app and the answer can be accessed [here](https://github.com/nafisazizir/pbp-assg-2/blob/main/katalog/README.md)
+
 # PBP Django Project Template
 
 Platform-Based Programming (CSGE602022) - Organized by the Faculty of Computer Science Universitas Indonesia, Odd Semester 2022/2023
