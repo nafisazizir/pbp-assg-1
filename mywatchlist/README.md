@@ -70,3 +70,11 @@ urlpatterns = [
 ] 
 ```
 7. Then, deploy the app in the HEROKU by pull, add, commit, and push to GitHub
+
+## Postman API
+#### HTML
+![alt text](./asset/html.jpg "HTML")
+#### XML
+![alt text](./asset/xml.jpg "XML")
+#### JSON
+![alt text](./asset/json.jpg "JSON")
