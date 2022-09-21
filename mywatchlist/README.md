@@ -2,7 +2,7 @@
 [HOME](https://pbp-assg-2.herokuapp.com) -
 [MY WATCHLIST HTML](https://pbp-assg-2.herokuapp.com/mywatchlist/html/) -
 [MY WATCHLIST XML](https://pbp-assg-2.herokuapp.com/mywatchlist/xml/) -
-[MY WATCHLIST JSON](https://pbp-assg-2.herokuapp.com/mywatchlist/json/) -
+[MY WATCHLIST JSON](https://pbp-assg-2.herokuapp.com/mywatchlist/json/)
 
 ## JSON, XML and HTML
 HTML (Hyper Text Markup Language) and XML (Extensible Matkup Language) has some differences. XML more focus on what the data is about, and describing the data. While HTML is more focus on how the data looks like and displaying the data. Tag type in XML is user defined, but in HTML is predefined. HTML extension file can be .html or .htm, and XML file extension is .xml. JSON (JavaScript Object Notation)'s file are easier to read than XML file. Different with XML, JSON doesn't have end tags. Nowadays, JSON are more popular and better than XML due to several reasons. XML is much more difficult to parse than JSON, and also JSON is parsed into a ready-to-use JavaScript object. 
