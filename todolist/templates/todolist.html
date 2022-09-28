@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+ {% block content %}
+  <style>
+    h1,h2,h3,b, button, th, td, table {text-align: center;}
+    table, th, td {
+      border-collapse: collapse;
+      background-color: rgb(221, 232, 251);
+      border-width: 1px;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid black;
+    }
+    *{
+      font-family: 'Roboto';
+      text-align: center;
+      vertical-align: middle;
+    }
+    th, td {
+      padding: 10px 14px
+    }
+    table {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+
+  <h1>Todolist ✅</h1>
+
+  <h2>Hello, {{username}} 👋🏻</h2>
+  <table>
+    <tr>
+      <th>Date</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Status</th>
+      <th>Option</th>
+    </tr>
+      {% for task in todolist %}
+      <tr>
+          <td>{{task.date}}</td>
+          <td>{{task.title}}</td>
+          <td>{{task.description}}</td>
+          <td>{% if task.is_finished %} Finished {% else %} Not Yet {% endif %}</td>
+          <th>
+            <button><a href="{% url 'todolist:delete_task' task.id %}" title="">Delete Task</a></button>
+            <button><a href="{% url 'todolist:update_finished' task.id %}" title="">Change Status</a></button>
+          </th>
+          {% endfor %}
+      </tr>
+  </table>
+<br>
+<button><a href="{% url 'todolist:create_task' %}">Create Task</a></button>
+<button><a href="{% url 'todolist:logout' %}">Logout</a></button>
+
+{% endblock content %}
