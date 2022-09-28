@@ -19,14 +19,6 @@ def show_todolist(request):
                 "username": request.user}
     return render(request, "todolist.html", context)
 
-def show_xml(request):
-    data = Task.objects.all()
-    return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")
-
-def show_json(request):
-    data = Task.objects.all()
-    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
-
 def register(request):
     form = UserCreationForm()
 
