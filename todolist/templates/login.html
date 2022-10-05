@@ -6,40 +6,40 @@
 
 {% block content %}
 
-<div class = "login">
+<div class="row">
+  <div class="col d-flex align-items-center justify-content-center">
+    <div class = "login">
 
-    <h1>Login</h1>
-
-    <form method="POST" action="">
+      <h1>Login</h1>
+      <form method="POST" action="">
         {% csrf_token %}
-        <table>
-            <tr>
-                <td>Username: </td>
-                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
-            </tr>
-                    
-            <tr>
-                <td>Password: </td>
-                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
-            </tr>
-
-            <tr>
-                <td></td>
-                <td><input class="btn login_btn" type="submit" value="Login"></td>
-            </tr>
-        </table>
-    </form>
-
-    {% if messages %}
+                
+          <div class="form-group first">
+            <label for="username">Username </style></label>
+            <input type="text" class="form-control" placeholder="enter your username" name="username">
+          </div>
+          <div class="form-group last mb-3">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" placeholder="enter your password" name="password">
+          </div>
+            Don't have an account? <a href="{% url 'todolist:register' %}">Create Account</a><br>
+            <br><input type="submit" value="Login" class="btn btn-block btn-primary">
+      </form>
+    
+      {% if messages %}
         <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
         </ul>
-    {% endif %}     
-        
-    Don't have an account? <a href="{% url 'todolist:register' %}">Create Account</a>
+      {% endif %}     
+              
+    </div>
+  </div>
 
+  <div class="col">
+    <img src="https://media.discordapp.net/attachments/999323446796353696/1024963424234520616/login_img.png?width=950&height=1069" class="img-fluid" alt="Responsive image">
+  </div>
 </div>
 
 {% endblock content %}

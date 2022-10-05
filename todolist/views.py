@@ -55,6 +55,7 @@ def logout_user(request):
 
 @login_required(login_url="/todolist/login/")
 def create_task(request):
+    context = {"username": request.user}
     if request.method == "POST":
         title = request.POST.get("title")
         description = request.POST.get("description")
@@ -65,7 +66,7 @@ def create_task(request):
             date=datetime.datetime.today(),
         )
         return HttpResponseRedirect(reverse("todolist:show_todolist"))
-    return render(request, "create_task.html")
+    return render(request, "create_task.html", context)
 
 @login_required(login_url="/todolist/login/")
 def delete_task(request, id):

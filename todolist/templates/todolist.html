@@ -1,56 +1,68 @@
 {% extends 'base.html' %}
 
- {% block content %}
-  <style>
-    h1,h2,h3,b, button, th, td, table {text-align: center;}
-    table, th, td {
-      border-collapse: collapse;
-      background-color: rgb(221, 232, 251);
-      border-width: 1px;
-      padding: 20px;
-      border-radius: 10px;
-      border: 1px solid black;
-    }
-    *{
-      font-family: 'Roboto';
-      text-align: center;
-      vertical-align: middle;
-    }
-    th, td {
-      padding: 10px 14px
-    }
-    table {
-      margin-left: auto;
-      margin-right: auto;
-    }
-  </style>
+{% block content %}
+<nav class="navbar navbar-expand-lg bg-light p-3" style="padding: 16px;" >
 
-  <h1>Todolist ✅</h1>
+  <div class="container-fluid">
+      <a class="navbar-brand" href="#">MyWishlist</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{% url 'todolist:show_todolist' %}">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'todolist:create_task' %}">New Task</a>
+            </li>
+          </ul>
+      </div>
+  </div>
+  
+  <div class="align-item-center">
+    <ul class="nav justify-content-end mx-3">
+      <li class="nav-item d-flex justify-content-end">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/2048px-Circle-icons-profile.svg.png" style="max-width: 5%">
+        <p class="font-weight-bold mx-2">{{username}}</p>
+      </li>
+    </ul>
+  </div>
+  
 
-  <h2>Hello, {{username}} 👋🏻</h2>
-  <table>
-    <tr>
-      <th>Date</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Status</th>
-      <th>Option</th>
-    </tr>
-      {% for task in todolist %}
-      <tr>
-          <td>{{task.date}}</td>
-          <td>{{task.title}}</td>
-          <td>{{task.description}}</td>
-          <td>{% if task.is_finished %} Finished {% else %} Not Yet {% endif %}</td>
-          <th>
-            <button><a href="{% url 'todolist:delete_task' task.id %}" title="">Delete Task</a></button>
-            <button><a href="{% url 'todolist:update_finished' task.id %}" title="">Change Status</a></button>
-          </th>
-          {% endfor %}
-      </tr>
-  </table>
+  <ul class="nav justify-content-end">
+    <li class="nav-item">
+      <button type="button" class="btn btn-primary">
+          <a class="text-decoration-none text-white" href="{% url 'todolist:logout' %}">Logout</a>
+      </button>
+    </li>
+  </ul>
+
+</nav>
+
 <br>
-<button><a href="{% url 'todolist:create_task' %}">Create Task</a></button>
-<button><a href="{% url 'todolist:logout' %}">Logout</a></button>
+
+{% for task in todolist %}
+  <div class="card mx-5 mb-3">
+    <div class="card-header">
+      <div class="row ">
+        <div class="col">
+          {{task.date}}
+        </div>
+        <div class="col" align="right">
+          {% if task.is_finished %} FINISHED {% else %} NOT YET {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <h5 class="card-title">{{task.title}}</h5>
+      <p class="card-text">{{task.description}}</p>
+      <a href="{% url 'todolist:update_finished' task.id %}" class="btn btn-primary">Change Status</a>
+      <a href="{% url 'todolist:delete_task' task.id %}" class="btn btn-primary">Delete Task</a>
+    </div>
+
+  </div>
+{% endfor %}
 
 {% endblock content %}
