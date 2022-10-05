@@ -47,3 +47,13 @@ urlpatterns = [
 ]
 ```
 7. Then, deploy the app in the HEROKU by pull, add, commit, and push to GitHub
+
+# Assignment 05
+
+## What is the difference between Inline, Internal, and External CSS? What are the advantages and disadvantages of each style?
+
+## Describe the HTML5 tags that you know.
+
+## Describe the types of CSS selectors you know.
+
+## Explain how you would implement the checklist above.
