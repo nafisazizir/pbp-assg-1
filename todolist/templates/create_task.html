@@ -10,34 +10,25 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="{% url 'todolist:show_todolist' %}">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'todolist:create_task' %}">New Task</a>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'todolist:show_todolist' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'todolist:create_task' %}">New Task</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">{{username}}</a>
+            </li>
+            <li class="nav-item">
+              <button type="button" class="btn btn-outline-primary my-2 my-sm-0">Logout
+                  <a href="{% url 'todolist:logout' %}"></a>
+              </button>
             </li>
           </ul>
       </div>
   </div>
-  
-  <div class="align-item-center">
-    <ul class="nav justify-content-end mx-3">
-      <li class="nav-item d-flex justify-content-end">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/2048px-Circle-icons-profile.svg.png" style="max-width: 5%;height: auto;">
-        <p class="font-weight-bold mx-2">{{username}}</p>
-      </li>
-    </ul>
-  </div>
-  
-
-  <ul class="nav justify-content-end">
-    <li class="nav-item">
-      <button type="button" class="btn btn-primary">
-          <a class="text-decoration-none text-white" href="{% url 'todolist:logout' %}">Logout</a>
-      </button>
-    </li>
-  </ul>
-
 </nav>
 
 <br>
