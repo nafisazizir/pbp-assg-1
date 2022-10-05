@@ -15,8 +15,20 @@ from django.urls import reverse
 @login_required(login_url='/todolist/login/')
 def show_todolist(request):
     todolist_data = Task.objects.filter(user=request.user)
+
+    not_yet = 0
+    for task in todolist_data:
+        if not task.is_finished:
+            not_yet +=1
+
+    if not_yet == 0 and todolist_data is not None:
+        mess = f"Congratulations, you've done all the tasks"
+    elif not_yet > 0:
+        mess  = f"You have {not_yet} unfinished tasks"
+
     context = {"todolist": todolist_data, 
-                "username": request.user}
+                "username": request.user,
+                "mess": mess}
     return render(request, "todolist.html", context)
 
 def register(request):

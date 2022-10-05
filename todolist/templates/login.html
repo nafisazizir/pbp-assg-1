@@ -6,39 +6,37 @@
 
 {% block content %}
 
-<div class="row">
-  <div class="col d-flex align-items-center justify-content-center">
-    <div class = "login">
+<div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+  <div class = "login bg-primary rounded-4 p-4">
 
-      <h1>Login</h1>
-      <form method="POST" action="">
-        {% csrf_token %}
-                
-          <div class="form-group first">
-            <label for="username">Username </style></label>
-            <input type="text" class="form-control" placeholder="enter your username" name="username">
-          </div>
-          <div class="form-group last mb-3">
-            <label for="password">Password</label>
-            <input type="password" class="form-control" placeholder="enter your password" name="password">
-          </div>
-            Don't have an account? <a href="{% url 'todolist:register' %}">Create Account</a><br>
-            <br><input type="submit" value="Login" class="btn btn-block btn-primary">
-      </form>
-    
-      {% if messages %}
-        <ul>
-          {% for message in messages %}
-            <li>{{ message }}</li>
-          {% endfor %}
-        </ul>
-      {% endif %}     
+    <h1 class="text-white">Login</h1>
+    <form method="POST" action="">
+      {% csrf_token %}
               
-    </div>
-  </div>
-
-  <div class="col">
-    <img src="https://media.discordapp.net/attachments/999323446796353696/1024963424234520616/login_img.png?width=950&height=1069" class="img-fluid" alt="Responsive image">
+        <div class="form-group first">
+          <label for="username" class="text-white">Username</label>
+          <input type="text" class="form-control" placeholder="enter your username" name="username">
+        </div>
+        <div class="form-group last my-3">
+          <label for="password" class="text-white">Password</label>
+          <input type="password" class="form-control" placeholder="enter your password" name="password">
+        </div>
+        <div class="div text-white">
+          Don't have an account? <a class="text-white" href="{% url 'todolist:register' %}">Create Account</a>
+        </div>
+        <div class="div d-flex justify-content-center mt-3">
+          <input type="submit" value="Login" class="btn btn-outline-light">
+        </div>
+    </form>
+  
+    {% if messages %}
+      <ul>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}     
+            
   </div>
 </div>
 
