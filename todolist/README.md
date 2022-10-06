@@ -110,71 +110,50 @@ While, the content example for the style.css as shown below:
 
 ## Describe the HTML5 tags that you know.
 ```
-Tag	Description
-<!--...-->	    Specifies a comment
-<!DOCTYPE>	    Specifies the document type
-<a>	            Specifies an anchor
-<abbr>	        Specifies an abbreviation
-<acronym>	    Deprecated:Specifies an acronym
-<address>	    Specifies an address element
-<applet>	    Deprecated: Specifies an applet
-<area>	        Specifies an area inside an image map
-<article>	    New Tag: Specifies an independent piece of content of a document, such as a blog entry or newspaper article
-<aside>	        New Tag:Specifies a piece of content that is only slightly related to the rest of the page.
-<audio>	        New Tag:Specifies an audio file.
-<base>	        Specifies a base URL for all the links in a page
-<basefont>	    Deprecated: Specifies a base font
-<bdo>	        Specifies the direction of text display
-<bgsound>	    Specifies the background music
-<blink>	Specifies a text which blinks
-<blockquote>	Specifies a long quotation
-<body>	Specifies the body element
-<br>	Inserts a single line break
-<button>	Specifies a push button
-<canvas>	New Tag:This is used for rendering dynamic bitmap graphics on the fly, such as graphs or games.
-<caption>	Specifies a table caption
-<center>	Deprecated: Specifies centered text
-<col>	Specifies attributes for table columns 
-<colgroup>	Specifies groups of table columns
-<command>	New Tag:Specifies a command the user can invoke.
-<comment>	Puts a comment in the document
-<datalist>	New Tag:Together with the a new list attribute for input can be used to make comboboxes
-<dd>	Specifies a definition description
-<del>	Specifies deleted text
-<details>	New Tag:Specifies additional information or controls which the user can obtain on demand.
-<dir>	Deprecated: Specifies a directory list
-<div>	Specifies a section in a document
-<b>	Specifies bold text
-<font>	Deprecated: Specifies text font, size, and color
-<form>	Specifies a form 
-<frame>	Deprecated:Specifies a sub window (a frame)
-<head>	Specifies information about the document
-<header>	New Tag:Specifies a group of introductory or navigational aids.
+<!--...-->	   Specifies a comment
+<!DOCTYPE>	   Specifies the document type
+<body>	       Specifies the body element
+<br>	        Inserts a single line break
+<button>	    Specifies a push button
+<canvas>	    New Tag:This is used for rendering dynamic bitmap graphics on the fly, such as graphs or games.
+<caption>	    Specifies a table caption
+<center>	    Deprecated: Specifies centered text
+<col>	        Specifies attributes for table columns 
+<colgroup>	  Specifies groups of table columns
+<command>	    New Tag:Specifies a command the user can invoke.
+<comment>	    Puts a comment in the document
+<div>	        Specifies a section in a document
+<b>	          Specifies bold text
+<font>	      Deprecated: Specifies text font, size, and color
+<form>	      Specifies a form 
+<frame>	      Deprecated:Specifies a sub window (a frame)
+<head>	      Specifies information about the document
+<header>	    New Tag:Specifies a group of introductory or navigational aids.
 <h1> to <h6>	Specifies header 1 to header 6
-<hr>	Specifies a horizontal rule
-<html>	Specifies an html document
-<img>	Specifies an image
-<input>	Specifies an input field
-<label>	Specifies a label for a form control
-<li>	Specifies a list item
-<link>	Specifies a resource reference
-<mark>	New Tag:Specifies a run of text in one document marked or highlighted for reference purposes, due to its relevance in another context.
-<nav>	New Tag:Specifies a section of the document intended for navigation.
-<p>	Specifies a paragraph
-<code>	Specifies computer code text
-<script>	Specifies a script
-<section>	New Tag:Represents a generic document or application section.
-<span>	Specifies a section in a document
-<style>	Specifies a style definition
-<table>	Specifies a table
-<tbody>	Specifies a table body
-<td>	Specifies a table cell
-<th>	Specifies a table header
-<thead>	Specifies a table header
-<title>	Specifies the document title
-<tr>	Specifies a table row
-<u>	Deprecated: Specifies underlined text
-<ul>	Specifies an unordered list
+<hr>	        Specifies a horizontal rule
+<html>	      Specifies an html document
+<img>	        Specifies an image
+<input>	      Specifies an input field
+<label>	      Specifies a label for a form control
+<li>	        Specifies a list item
+<link>	      Specifies a resource reference
+<mark>	      New Tag:Specifies a run of text in one document marked or highlighted for reference purposes, due to its relevance in another context.
+<nav>	        New Tag:Specifies a section of the document intended for navigation.
+<p>	          Specifies a paragraph
+<code>	      Specifies computer code text
+<script>	    Specifies a script
+<section>	    New Tag:Represents a generic document or application section.
+<span>	      Specifies a section in a document
+<style>	      Specifies a style definition
+<table>	      Specifies a table
+<tbody>	      Specifies a table body
+<td>	        Specifies a table cell
+<th>	        Specifies a table header
+<thead>	      Specifies a table header
+<title>	      Specifies the document title
+<tr>	        Specifies a table row
+<u>	          Deprecated: Specifies underlined text
+<ul>	        Specifies an unordered list
 ```
 
 ## Describe the types of CSS selectors you know.
