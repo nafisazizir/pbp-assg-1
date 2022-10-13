@@ -12,7 +12,7 @@
 <nav class="navbar navbar-expand-lg bg-light p-3" style="padding: 16px;" >
 
   <div class="container-fluid">
-      <a class="navbar-brand" href="#">MyWishlist</a>
+      <a class="navbar-brand" href="#">MyTodolist</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
       </button>
@@ -22,7 +22,7 @@
               <a class="nav-link active" aria-current="page" href="{% url 'todolist:show_todolist' %}">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="{% url 'todolist:create_task' %}">New Task</a>
+              <a class="nav-link active" aria-current="page" href="#" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">New Task</a>
             </li>
           </ul>
           <ul class="navbar-nav mb-2 mb-lg-0">
@@ -39,56 +39,120 @@
   </div>
 </nav>
 
-<div class="div m-4 d-flex justify-content-center">
+<!-- <div class="div m-4 d-flex justify-content-center">
   <h4>
     {{mess}}
   </h4>
+</div> -->
+
+<br>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Create New Task</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="post" id="formTask">
+          {% csrf_token %}
+          <table class="table table-striped table-hover table table-bordered px-5">
+            <tr>
+              <td>Title: </td>
+              <td><input type="text" name="title" placeholder="Fill todo" class="form-control"></td>
+            </tr>
+                  
+            <tr>
+              <td>Description: </td>
+              <td><input type="text" name="description" placeholder="Fill description" class="form-control"></td>
+            </tr>
+          </table>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" id ="buttonTask" data-bs-dismiss="modal" class="btn btn-primary">Add Task</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="container-fluid">
-  <div class="row row-cols-1 row-cols-md-3 g-4 mx-5">
-    {% for task in todolist %}
-    <div class="col">
-      <div class="card">
-        {% if task.is_finished %}
-        <div class="card-header bg-primary text-white">
-          <div class="row ">
-            <div class="col">
-              {{task.date}}
-            </div>
-            <div class="col font-weight-bold" align="right">
-              {% if task.is_finished %} FINISHED {% else %} NOT YET {% endif %}
-            </div>
-          </div>
-        </div>
-        {% else %}
-        <div class="card-header bg-danger text-white">
-          <div class="row ">
-            <div class="col">
-              {{task.date}}
-            </div>
-            <div class="col font-weight-bold" align="right">
-              {% if task.is_finished %} FINISHED {% else %} NOT YET {% endif %}
-            </div>
-          </div>
-        </div>
-        {% endif %}
-        <div class="card-body">
-          <h5 class="card-title">{{task.title}}</h5>
-          <p class="card-text">{{task.description}}</p>
-          <div class="row">
-            <div class="col">
-              <a href="{% url 'todolist:update_finished' task.id %}" class="btn btn-primary">Change Status</a>
-            </div>
-            <div class="col d-flex justify-content-end">
-              <a href="{% url 'todolist:delete_task' task.id %}" class="btn btn-danger">Delete Task</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  {% endfor %}
+  <div class="row row-cols-1 row-cols-md-3 g-4 mx-5" id="cardcontainer">
+  
   </div>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+  $(document).ready(function()  {
+    refreshTodolist();
+  });
+
+  async function getTodolist() {
+      return fetch("{% url 'todolist:show_json' %}").then((res) => res.json())
+    }
+  
+  async function refreshTodolist() {
+        document.getElementById("cardcontainer").innerHTML = ""
+        const todolist = await getTodolist()
+        let htmlString = ``
+        todolist.forEach((item) => {
+          const bg_type = item.fields.is_finished ? "primary" : "danger"
+          const status = item.fields.is_finished ? "FINISHED" : "NOT YET"
+          htmlString += `
+          <div class="col">
+            <div class="card">
+              <div class="card-header bg-${bg_type} text-white">
+                <div class="row ">
+                  <div class="col">
+                    ${item.fields.date}
+                  </div>
+                  <div class="col font-weight-bold" align="right">
+                    ${status}
+                  </div>
+                </div>
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">${item.fields.title}</h5>
+                <p class="card-text">${item.fields.description}</p>
+                <div class="row">
+                  <div class="col">
+                    <button class="btn btn-primary" onclick="updateTask(${item.pk})">Change Status</button>
+                  </div>
+                  <div class="col d-flex justify-content-end">
+                    <button class="btn btn-primary" onclick="deleteTask(${item.pk})">Delete</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>`
+        })
+        document.getElementById("cardcontainer").innerHTML = htmlString
+  }
+  
+  function addTodolist() {
+    fetch("{% url 'todolist:create_task' %}", {
+          method: "POST",
+          body: new FormData(document.querySelector('#formTask'))
+      }).then(refreshTodolist)
+    return false
+  }
+
+  function deleteTask(val) {
+    console.log(111);
+    fetch("{% url 'todolist:delete_task' 0 %}".replace("0", val)).then(refreshTodolist)
+  }
+
+  function updateTask(val) {
+    console.log(111);
+    fetch("{% url 'todolist:update_finished' 0 %}".replace("0", val)).then(refreshTodolist)
+  }
+  
+  document.getElementById("buttonTask").onclick = addTodolist
+  refreshTodolist()
+  
+</script>
 
 {% endblock content %}

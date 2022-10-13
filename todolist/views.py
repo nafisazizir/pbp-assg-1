@@ -92,3 +92,8 @@ def update_finished(request, id):
     task.is_finished = not task.is_finished
     task.save(update_fields=["is_finished"])
     return HttpResponseRedirect(reverse("todolist:show_todolist"))
+
+@login_required(login_url="/todolist/login/")
+def show_json(request):
+    data = Task.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize("json", data), content_type="application/json")
